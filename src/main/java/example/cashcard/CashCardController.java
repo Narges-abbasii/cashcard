@@ -94,11 +94,11 @@ class CashCardController {
             Principal principal // Add Principal to the parameter list
     ) {
         // Add the following 3 lines:
-        if (!cashCardRepository.existsByIdAndOwner(id, principal.getName())) {
-            return ResponseEntity.notFound().build();
+        if (cashCardRepository.existsByIdAndOwner(id, principal.getName())) {
+            cashCardRepository.deleteById(id);
+            return ResponseEntity.noContent().build();
         }
-        cashCardRepository.deleteById(id); // Add this line
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.notFound().build();
     }
 
 }
