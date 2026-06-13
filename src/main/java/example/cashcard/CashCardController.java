@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @RestController
 @RequestMapping("/cashcards")
@@ -25,5 +26,10 @@ class CashCardController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping
+    private ResponseEntity<Void> createCashCard() {
+        return null;
     }
 }
